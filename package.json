@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "auth:generate": "bunx @better-auth/cli generate --config ./server/auth/cli.ts --output ./server/db/schema/auth.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
@@ -30,6 +33,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.38.4",
+    "firebase": "^12.4.0",
     "hono": "^4.9.10",
     "lucide-react": "^0.487.0",
     "next": "15.3.0",

@@ -1,28 +1,32 @@
-import Header from "@/components/header";
-import Providers from "@/components/providers";
-import "@/components/style.css";
-import type { Metadata } from "next";
+import type React from "react"
+import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+
+import "./globals.css"
+import { AuthProvider } from "@/lib/auth-context"
+import { Navbar } from "@/components/navbar"
+
+const _geist = Geist({ subsets: ["latin"] })
+const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-    title: "app",
-    description: "app",
-};
+  title: "SJCET Projects",
+  generator: "Nexus SJCET",
+}
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-    return (
-        <html lang="en" suppressHydrationWarning>
-            <body>
-                <Providers>
-                    <div className="grid grid-rows-[auto_1fr] h-svh">
-                        <Header />
-                        {children}
-                    </div>
-                </Providers>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className={`font-sans antialiased`}>
+        <AuthProvider>
+          <Navbar/>
+          {children}
+        </AuthProvider>
+      </body>
+    </html>
+  )
 }
